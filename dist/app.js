@@ -28,13 +28,13 @@ try {
         var init = readDirectory(path);
         // console.log(init);
         init.forEach(function (fileorFolder) {
-            var currentPath = path + "/" + fileorFolder;
+            var currentPath = path.endsWith('/')
+                ? "" + path + fileorFolder
+                : path + "/" + fileorFolder;
             var isDirec = fs_1.default.existsSync(currentPath) && fs_1.default.lstatSync(currentPath).isDirectory();
             if (!tobeIgnored ||
                 !tobeIgnored.some(function (tb) { return fileorFolder.includes(tb); })) {
                 if (isDirec) {
-                    // currentDirectory = currentPath;
-                    // console.log(currentPath);
                     countSubFolders_1(currentPath);
                 }
                 else {

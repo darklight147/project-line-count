@@ -24,7 +24,9 @@ try {
 		const init = readDirectory(path);
 		// console.log(init);
 		init.forEach((fileorFolder) => {
-			const currentPath = `${path}/${fileorFolder}`;
+			const currentPath = path.endsWith('/')
+				? `${path}${fileorFolder}`
+				: `${path}/${fileorFolder}`;
 			const isDirec =
 				fs.existsSync(currentPath) && fs.lstatSync(currentPath).isDirectory();
 			if (
