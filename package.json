@@ -1,0 +1,14 @@
+{
+	"name": "countlines",
+	"version": "1.0.0",
+	"main": "dist/app.js",
+	"license": "MIT",
+	"dependencies": {
+		"@types/node": "^14.14.8"
+	},
+	"scripts": {
+		"prestart": "tsc -p .",
+		"start": "node ."
+	},
+	"bin": "./dist/app.js"
+}
