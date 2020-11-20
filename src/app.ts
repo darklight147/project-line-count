@@ -12,9 +12,7 @@ tobeIgnored.length &&
 	);
 
 const readDirectory = (path: string) => {
-	return fs.readdirSync(currentDirectory).length
-		? fs.readdirSync(currentDirectory)
-		: [];
+	return fs.readdirSync(path).length ? fs.readdirSync(path) : [];
 };
 
 let sum = -1;
@@ -34,8 +32,6 @@ try {
 				!tobeIgnored.some((tb) => fileorFolder.includes(tb))
 			) {
 				if (isDirec) {
-					currentDirectory = currentPath;
-					// console.log(currentPath);
 					countSubFolders(currentPath);
 				} else {
 					const tmpp = fs.readFileSync(currentPath).toString().split('\n')
