@@ -21,8 +21,10 @@ tobeIgnored.length &&
 var readDirectory = function (path) {
     return fs_1.default.readdirSync(path).length ? fs_1.default.readdirSync(path) : [];
 };
-var sum = -1;
+var sum = 0;
+var files = 0;
 var linesSum = 0;
+var eachLine = [];
 try {
     var countSubFolders_1 = function (path) {
         var init = readDirectory(path);
@@ -36,20 +38,25 @@ try {
                 !tobeIgnored.some(function (tb) { return fileorFolder.includes(tb); })) {
                 if (isDirec) {
                     countSubFolders_1(currentPath);
+                    sum++;
                 }
                 else {
-                    var tmpp = fs_1.default.readFileSync(currentPath).toString().split('\n')
-                        .length;
-                    console.log(currentPath, tmpp);
-                    linesSum += tmpp;
+                    // const tmpp = fs.readFileSync(currentPath).toString().split('\n')
+                    // 	.length;
+                    // console.log(currentPath, tmpp);
+                    // eachLine.push(tmpp);
+                    // linesSum += tmpp;
+                    console.log(currentPath);
+                    files++;
                 }
             }
-            sum++;
         });
         return sum;
     };
     countSubFolders_1(currentDirectory);
+    console.log("\n\n\n" + sum + " Folders, " + files + " Files");
     console.log('\n\nTotal lines found ' + linesSum);
+    console.log('\n\nMost lines found in one file ' + Math.max.apply(Math, eachLine));
 }
 catch (error) {
     console.log(error);
