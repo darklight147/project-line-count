@@ -40,8 +40,10 @@ try {
 					countSubFolders(currentPath);
 					sum++;
 				} else {
-					const tmpp = fs.readFileSync(currentPath).toString().split('\n')
-						.length;
+					const tmpp = fs
+						.readFileSync(currentPath)
+						.toString()
+						.split('\n').length;
 					console.log(currentPath, tmpp);
 					eachLine.push(tmpp);
 					linesSum += tmpp;

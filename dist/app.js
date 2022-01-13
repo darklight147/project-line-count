@@ -41,12 +41,11 @@ try {
                     sum++;
                 }
                 else {
-                    // const tmpp = fs.readFileSync(currentPath).toString().split('\n')
-                    // 	.length;
-                    // console.log(currentPath, tmpp);
-                    // eachLine.push(tmpp);
-                    // linesSum += tmpp;
-                    console.log(currentPath);
+                    var tmpp = fs_1.default.readFileSync(currentPath).toString().split('\n')
+                        .length;
+                    console.log(currentPath, tmpp);
+                    eachLine.push(tmpp);
+                    linesSum += tmpp;
                     files++;
                 }
             }
